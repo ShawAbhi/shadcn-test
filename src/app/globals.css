@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-background text-foreground;
+  position: relative; /* Ensure positioning context for pseudo-element */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 @layer utilities {
@@ -14,7 +16,7 @@ body {
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 80 90% 40%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
@@ -30,7 +32,7 @@ body {
     --accent-foreground: 240 5.9% 10%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
+    --border: 240 5.9%
     --input: 240 5.9% 90%;
     --ring: 240 10% 3.9%;
     --chart-1: 12 76% 61%;
@@ -41,7 +43,7 @@ body {
     --radius: 0.5rem;
   }
   .dark {
-    --background: 240 10% 3.9%;
+    --background: 240 10% 3.9%; /* Converted to RGBA */
     --foreground: 0 0% 98%;
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
@@ -65,42 +67,5 @@ body {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-    position: relative; /* Ensure positioning context for pseudo-element */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-    margin: 0; /* Remove default margin */
-  }
-
-  body::before {
-    content: '';
-    position: fixed; /* Use fixed to keep the blob in place */
-    top: 50%;
-    left: 50%;
-    width: 150vw; /* Make the blob larger than the viewport */
-    height: 150vh; /* Make the blob larger than the viewport */
-    background: radial-gradient(circle at 50% 50%, rgba(255, 0, 150, 0.5), transparent 70%);
-    transform: translate(-50%, -50%); /* Center the blob */
-    z-index: -1; /* Place the pseudo-element behind the content */
-    animation: parallax 20s infinite linear;
-  }
-
-  @keyframes parallax {
-    0% {
-      transform: translate(-50%, -50%) translateY(0);
-    }
-    50% {
-      transform: translate(-50%, -50%) translateY(-10%);
-    }
-    100% {
-      transform: translate(-50%, -50%) translateY(0);
-    }
   }
 }

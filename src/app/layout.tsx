@@ -28,9 +28,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <nav style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100px' }}>
-          <h1>This is a Heading</h1>
-        </nav>
         {children}
       </body>
     </html>
